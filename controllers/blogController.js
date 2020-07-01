@@ -13,6 +13,13 @@ const getAllBlogs = (req, res) => {
         } else {
           if (blogs.length === 0) {
             console.log("There are no blogs yet");
+            res.render("blogs/index", {
+              title: "All Blogs",
+              blogs: blogs,
+              success: req.session.success,
+              loggedin: req.session.loggedin,
+              user: req.session.user,
+            });
           } else {
             res.render("blogs/index", {
               title: "All Blogs",
