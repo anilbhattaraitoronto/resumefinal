@@ -13,7 +13,16 @@ const getAllEducation = (req, res) => {
         } else {
           if (items.length === 0) {
             console.log("There is no education item yet");
-            res.redirect("/");
+            res.render(
+              "education/index",
+              {
+                title: "Educational Qualifications",
+                success: req.session.success,
+                loggedin: req.session.loggedin,
+                user: req.session.user,
+                degrees: items,
+              },
+            );
           } else {
             res.render(
               "education/index",
