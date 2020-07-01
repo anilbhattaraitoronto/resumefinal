@@ -8,23 +8,27 @@ const getAllBlogs = (req, res) => {
     } else {
       let getBlogsStmt = `SELECT * from blogs LIMIT 10;`;
       DB.all(getBlogsStmt, [], (err, blogs) => {
-        if (blogs.length === 0) {
-          console.log("There are no blogs yet");
+        if (err) {
+          console.error("Error: ", err.message);
         } else {
-          res.render("blogs/index", {
-            title: "All Blogs",
-            blogs: blogs,
-            success: req.session.success,
-            loggedin: req.session.loggedin,
-            user: req.session.user,
-          });
-          DB.close((err) => {
-            if (err) {
-              console.log("Error: ", err.message);
-            } else {
-              console.log("Got all blogs. Db is closed now");
-            }
-          });
+          if (blogs.length === 0) {
+            console.log("There are no blogs yet");
+          } else {
+            res.render("blogs/index", {
+              title: "All Blogs",
+              blogs: blogs,
+              success: req.session.success,
+              loggedin: req.session.loggedin,
+              user: req.session.user,
+            });
+            DB.close((err) => {
+              if (err) {
+                console.log("Error: ", err.message);
+              } else {
+                console.log("Got all blogs. Db is closed now");
+              }
+            });
+          }
         }
       });
     }
