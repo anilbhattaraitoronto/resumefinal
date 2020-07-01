@@ -13,7 +13,7 @@ const getAllEducation = (req, res) => {
         } else {
           if (items.length === 0) {
             console.log("There is no education item yet");
-            return;
+            res.redirect("/");
           } else {
             res.render(
               "education/index",
