@@ -15,7 +15,16 @@ const getAllProjects = (req, res) => {
           //render the projects page
           if (projects.length === 0) {
             console.log("There is no project yet");
-            res.redirect("/");
+            res.render(
+              "projects/index",
+              {
+                projects: projects,
+                title: "All Projects",
+                success: req.session.success,
+                loggedin: req.session.loggedin,
+                user: req.session.user,
+              },
+            );
           } else {
             res.render(
               "projects/index",
