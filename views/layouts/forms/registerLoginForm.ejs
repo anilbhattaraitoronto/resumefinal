@@ -1,0 +1,39 @@
+<article class="form-container auth-form-container">
+    <span class="close-form">Close X</span>
+    <div class="register-form-container">
+        <h3 class="form-title">Add New User</h3>
+        <form action="/users/addUser" class="create-form" method="POST">
+            <div class="form-item">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-item">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-item">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <div class="form-item">
+                <button class="submit-button">Add New User</button>
+            </div>
+        </form>
+    </div>
+    <div class="login-form-container">
+        <h3 class="form-title">Login</h3>
+        <form action="/users/login" class="create-form" method="POST">
+            <div class="form-item">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-item">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-item">
+                <button class="submit-button">Login</button>
+            </div>
+        </form>
+    </div>
+</article>

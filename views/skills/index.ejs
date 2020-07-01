@@ -1,0 +1,17 @@
+<main class="main-content">
+    <h2 class="page-title">All Skills</h2>
+    <% if (skills){%>
+    <div class="skill-container">
+        <% skills.forEach((skill)=>{%>
+        <article class="item">
+            <h3><%= skill.title %></h3>
+            <p><%= skill.description %></p>
+            <% if(locals.user && locals.user.is_admin===1){%>
+            <button>Delete</button><button>Update</button>
+            <%}%>
+        </article>
+       
+        <%})%>
+    </div>
+    <%}%>
+</main>

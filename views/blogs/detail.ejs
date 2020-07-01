@@ -1,0 +1,39 @@
+<main class="main-content">
+
+    <%if (blog){%>
+    <h2 class="page-title"><%=blog.title%></h2>
+    <div class="blog">
+        <h3 class="blog-title"><%= blog.title%></h3>
+        <h4 class="blog-author"><%= blog.author %></h4>
+        <p class="blog-keywords">Keywords: <em><%= blog.keywords %></em></p>
+        <p class="blog-summary">Summary: <em><%= blog.summary%></em></p>
+        <p class="blog-content"><%= blog.content%></p>
+
+    </div>
+    <%}%>
+    <% if (locals.user && locals.user.is_admin ===1){%>
+    <button>Delete</button><button>update</button>
+    <%}%>
+    
+<% if (comments.length >0){%>
+    <h4 class="comment-section-title">Comments </h4>
+    <% comments.forEach((comment)=>{%>
+    <p><%=comment.commenter%></p>
+    <p><%= comment.comment%></p>
+    <% if(locals.user && locals.user.username === comment.commenter){%>
+    <button>Delete Comment</button><button>Update Comment</button>
+    <%}%>
+    <%})%>
+    <%} else {%>
+    <p>There is no comment yet in this article. Be the first one to comment.</p>
+    <%}%>
+
+
+<% if(locals.user && locals.loggedin){%>
+    <p>Please make your comment <a href="/users/profile/<%=user.userid%>"><%= user.username %></a> </p>
+    <%- include('../layouts/forms/addCommentForm') %>
+    <%}else{%>
+    <p>You have to be logged in to make comments.</p>
+    <%}%>
+    
+</main>

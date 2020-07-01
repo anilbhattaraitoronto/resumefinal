@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/images/ab_logo_bw.png">
+    <title><% if (locals.title)  { %> <%= title%> <%}%> | Dr Anil Bhattarai, PhD</title>
+</head>
+
+<body>
+    <section class="app-wrapper">
+    <%- include('./partials/header')%>
+
+
+        <%- body %>
+        <%- include('./partials/footer')%>
+        </section>
+        <script src="/js/ui.js"></script>
+        <script>
+            let authNav = document.querySelector('.auth-nav')
+            let formContainers = document.querySelectorAll('.form-container')
+            let closeFormButtons = document.querySelectorAll('.close-form')
+
+
+            authNav.addEventListener("click", (event) => {
+                let authLinks = Array.from(document.querySelectorAll('.auth-link'))
+                let targetItem = event.target;
+                let targetIndex = authLinks.indexOf(targetItem)
+                if (targetIndex !== -1) {
+                    formContainers.forEach(item => {
+                        item.classList.remove('active')
+                    })
+                    formContainers[targetIndex].classList.add('active')
+
+                }
+            })
+            closeFormButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    formContainers.forEach(item => {
+                        item.classList.remove('active')
+                    })
+                })
+            })
+        </script>
+        </body>
+
+</html>

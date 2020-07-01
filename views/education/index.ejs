@@ -1,0 +1,19 @@
+<main class="main-content">
+    <h2 class="page-title">My Educational Qualifications</h2>
+    <% if(degrees){%>
+    <article class="degree-container">
+        <% degrees.forEach((degree)=>{%>
+        <div class="item">
+            <h3 class="degree-title"><%= degree.degree %></h3>
+            <p><%= degree.school %></p>
+            <p><%= degree.department %></p>
+            <p><em><%= degree.thesis %></em></p>
+            <p><%= degree.year_finished %></p>
+        </div>
+        <% if(locals.user && locals.user.is_admin===1){%>
+        <button>Delete</button><button>Update</button>
+        <%}%>
+        <%})%>
+    </article>
+    <%}%>
+</main>

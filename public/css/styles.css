@@ -1,0 +1,204 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+*{
+    line-height: 1.6;
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    --themeColor1: rgb(149, 179, 235);
+}
+
+body{
+    width: 100%;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+    color: unset;
+}
+label, input, textarea{
+    display: block;
+    width: 100%;
+    margin: auto;
+    text-align: left;
+}
+button{
+    cursor: pointer;
+}
+.app-wrapper{
+    position: relative;
+    width: 100%;
+    margin: auto;
+    min-height: 100vh;
+    background-image: linear-gradient(90deg, gray, lightgray);
+    background: var(--themeColor1);
+    color: black;
+}
+.main-header{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 16px 8px;
+    box-shadow: 0 1px 0 rgb(190, 186, 186);
+    background-image: linear-gradient(90deg, gray, lightgray);
+    background: var(--themeColor1);
+}
+.auth-nav{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8px ;
+}
+.auth-link{
+    cursor: pointer;
+    padding: 8px 0;
+}
+.auth-link:hover{
+    color: darkblue;
+}
+.main-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+}
+.masthead a{
+    font-size: 1.5em;
+}
+.logo{
+    height: 50px;
+    width: 50px;
+    padding: 4px;
+    border: 1px solid white;
+}
+.main-link{
+    padding: 0 12px;
+}
+.main-link:hover{
+    color: darkblue;
+}
+
+/* Styles for create forms */
+.form-title{
+    text-align: center;
+}
+
+.form-container{
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: scale(0) ;
+    width: 95%;
+    max-width: 650px;
+    margin: auto;
+    z-index: 100;
+    background-image: linear-gradient(90deg, lightgray, gray);
+    transition: 300ms all ease-in-out;
+    padding: 20px;
+    box-shadow: 0 0 2px gray;
+    text-align: right;
+}
+
+.active{
+    transform: scale(1) translateX(-50%) ;
+}
+.close-form{
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: red;
+}
+
+.auth-form-container{
+    width: 100%;
+    max-width: 320px;
+    text-align: left;
+    background: var(--themeColor1);
+}
+.auth-form-container form{
+    margin: 20px auto;
+    padding: 8px;
+    box-shadow: 0 0 1px darkblue;
+}
+.auth-form-container button{
+    font-size: .9em;
+}
+
+/* Page styles */
+.main-content{
+    height: 100%;
+    width: 95%;
+    max-width: 700px;
+    /* box-shadow: 0 0 1px rgb(44, 43, 43); */
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.page-title{
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Styling blogs */
+
+.blog-container{
+    padding: 8px 16px;
+    background: white;
+}
+.blog, .item{
+    padding: 8px 0;
+    line-height: 1.6;
+    box-shadow: 0 1px 0 darkblue;
+}
+
+.read-full-link{
+    text-decoration: underline;
+    color: darkblue;
+}
+.read-full-link:hover{
+    text-decoration: none;
+    color: blue;
+}
+.posted-date{
+    font-size: .9em;
+    color: rgba(0, 0, 0, 0.527);
+}
+/* Comment form styles */
+
+.comment-form-container{
+    width: 100%;
+    max-width: 420px;
+    margin: 16px 0 16px 8px;
+}
+.add-comment-button{
+    cursor: pointer;
+    width: 140px;
+    height: 40px;
+    font-size: 1em;
+}
+
+footer{
+    position: relative;
+    padding: 20px 0;
+    text-align: center;
+    font-size: .9em;
+    width: 100%;
+    margin: auto;
+}
+.fa{
+    padding: 8px 16px;
+    font-size: 1.5em;
+    padding: 2px;
+    border:1px solid lightgray;
+    transition: 250ms all ease-in-out;
+}
+.fa:hover{
+    color: darkblue;
+    border-color: darkblue;
+}

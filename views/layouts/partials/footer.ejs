@@ -1,0 +1,44 @@
+<footer>
+    <main class="forms">
+        <%if (!locals.user && !locals.loggedin){%>
+        <%- include('../forms/registerLoginForm.ejs')%>
+        <%}%>
+        <% if(locals.user && locals.user.is_admin===1) {%>
+        <%- include('../forms/addBlogForm.ejs')%>
+        <%- include('../forms/addProjectForm.ejs')%>
+        <%- include('../forms/addEducationForm.ejs')%>
+        <%- include('../forms/addSkillForm.ejs')%>
+        <%}%>
+
+    </main>
+
+    
+
+    <nav class="auth-nav">
+        <%if (!locals.user && !locals.loggedin){%>
+        <span class="auth-link">Login/Register</span>
+        <%}%>
+        <%if (locals.user){%>
+        <p>Welcome <%= user.username %>. <a href="/users/profile/<%=user.username%>">Go To your profile.</a> </p>
+        <a href="/users/logout">Logout</a>
+        <%}%>
+        <% if(locals.user && locals.user.is_admin===1) {%>
+        <h3 class="section-title">Manage Site</h3>
+        <span class="auth-link">Add New Blog</span>
+        <span class="auth-link">Add New Project</span>
+        <span class="auth-link">Add New Education</span>
+        <span class="auth-link">Add New Skill</span>
+        <%}%>
+    </nav>
+
+   
+    <p>
+        <a href="https://github.com/anilbhattaraitoronto" class="fa fa-github"></a>
+        <a href="https://facebook.com/anilbhattarai" class="fa fa-facebook"></a>
+        <a href="https://twitter.com/anilbhattarai" class="fa fa-twitter"></a>
+        <a href="https://www.linkedin.com/in/anil-bhattarai-5a699b28" class="fa fa-linkedin"></a>
+        <a href="mailto:anilbhattarai@gmail.com" class="fa fa-envelope"></a>
+    </p>
+
+    <p>&copy; Anil Bhattarai 2020 - Present. All Rights Reserved.</p>
+</footer>

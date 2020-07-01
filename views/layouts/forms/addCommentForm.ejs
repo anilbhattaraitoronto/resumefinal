@@ -1,0 +1,12 @@
+<article class="comment-form-container">
+    <h3 class="comment-form-title">Add Comment</h3>
+    <form action="/blogs/comments" class="add-comment-form" method="POST">
+        <div class="form-item">
+            <input type="hidden" name="blogid" value="<%= blog.blogid %>">
+            <textarea name="comment" id="comment" cols="30" rows="10" required></textarea>
+        </div>
+        <div class="form-item">
+            <button class="add-comment-button">Add Comment</button>
+        </div>
+    </form>
+</article>
