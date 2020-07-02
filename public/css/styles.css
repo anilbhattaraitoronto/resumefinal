@@ -79,10 +79,8 @@ button{
 .main-link{
     padding: 0 12px;
 }
-.main-link:hover{
-    color: darkblue;
-}
-.main-link.active{
+
+.main-link.active, .main-link:hover{
     color: darkblue;
     text-decoration: underline;
 }
