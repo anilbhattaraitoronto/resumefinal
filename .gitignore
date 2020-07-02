@@ -4,3 +4,4 @@ node_modules
 projectDetails.txt
 sessions
 .vscode
+deploy.sh
