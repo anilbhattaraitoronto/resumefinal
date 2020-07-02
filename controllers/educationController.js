@@ -95,8 +95,86 @@ const addNewEducation = (req, res) => {
     });
   }
 };
+const updateEducation = (req, res) => {
+  if (req.session.user && req.session.user.is_admin === 1) {
+    let degree = req.body.degree;
+    let school = req.body.school;
+    let department = req.body.department;
+    let thesis = req.body.thesis;
+    let yearFinished = req.body.year_finished;
+    let educationId = req.body.educationid;
+
+    let updateEducationStmt =
+      `UPDATE education SET degree=?, school=?, department=?, thesis=?, year_finished=? WHERE educationid =?; `;
+    let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
+      if (err) {
+        console.error("Error: ", err.message);
+        res.redirect(`/education`);
+      } else {
+        DB.run(
+          updateEducationStmt,
+          [degree, school, department, thesis, yearFinished, educationId],
+          (err) => {
+            if (err) {
+              console.error("Error: ", err.message);
+              res.redirect(`/education`);
+            } else {
+              console.log("Education Item updated");
+              DB.close((err) => {
+                if (err) {
+                  console.error("Error: ", err.message);
+                  res.redirect(`/education`);
+                } else {
+                  console.log("Db is closed after updating!");
+                  res.redirect(`/education`);
+                }
+              });
+            }
+          },
+        );
+      }
+    });
+  } else {
+    console.log("Need to be admin staff to update education item");
+  }
+};
+
+const deleteEducation = (req, res) => {
+  if (req.session.user && req.session.user.is_admin === 1) {
+    let educationId = req.body.educationid;
+    let deleteEducationStmt = `DELETE from education WHERE educationid=?;`;
+
+    let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
+      if (err) {
+        console.error("Error: ", err.message);
+        res.redirect(`/education`);
+      } else {
+        DB.run(deleteEducationStmt, educationId, (err) => {
+          if (err) {
+            console.error("Error: ", err.message);
+            res.redirect(`/education`);
+          } else {
+            DB.close((err) => {
+              if (err) {
+                console.error("Error: ", err.message);
+                res.redirect("/education");
+              } else {
+                console.log("That post is deleted and DB closed");
+                res.redirect(`/education`);
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    console.log("Need to be admin staff to delete education item");
+  }
+};
 
 module.exports = {
   getAllEducation,
   addNewEducation,
+  updateEducation,
+  deleteEducation,
 };

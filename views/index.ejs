@@ -9,11 +9,8 @@
             <p><%=blog.summary%></p>
             <a href="/blogs/detail/<%=blog.blogid%>" class="read-full-link">Read full article</a>
             <p class="posted-date"><%= blog.posted_date %></p>
-            <% if(locals.user && locals.user.is_admin===1){%>
-            <button>Delete</button><button>Update</button>
-            <%}%>
-    </div>
-        <%})%>
         </div>
-        <%}%>
+        <%})%>
+    </div>
+    <%}%>
 </main>

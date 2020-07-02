@@ -71,7 +71,84 @@ const createNewSkill = (req, res) => {
     console.log("You need to be admin to add skills");
   }
 };
+
+const updateSkill = (req, res) => {
+  if (req.session.user && req.session.user.is_admin === 1) {
+    let title = req.body.title;
+    let description = req.body.description;
+    let skillId = req.body.skillid;
+
+    let updateSkillStmt =
+      `UPDATE skills SET title=?, description=? WHERE skillid =?; `;
+    let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
+      if (err) {
+        console.error("Error: ", err.message);
+        res.redirect(`/skills`);
+      } else {
+        DB.run(
+          updateSkillStmt,
+          [title, description, skillId],
+          (err) => {
+            if (err) {
+              console.error("Error: ", err.message);
+              res.redirect(`/skills`);
+            } else {
+              console.log("Skill Item updated");
+              DB.close((err) => {
+                if (err) {
+                  console.error("Error: ", err.message);
+                  res.redirect(`/skills`);
+                } else {
+                  console.log("Db is closed after updating skill!");
+                  res.redirect(`/skills`);
+                }
+              });
+            }
+          },
+        );
+      }
+    });
+  } else {
+    console.log("Need to be admin staff to update skill");
+  }
+};
+
+const deleteSkill = (req, res) => {
+  if (req.session.user && req.session.user.is_admin === 1) {
+    let skillId = req.body.skillid;
+    let deleteSkillStmt = `DELETE from skills WHERE skillid=?;`;
+
+    let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
+      if (err) {
+        console.error("Error: ", err.message);
+        res.redirect(`/skills`);
+      } else {
+        DB.run(deleteSkillStmt, skillId, (err) => {
+          if (err) {
+            console.error("Error: ", err.message);
+            res.redirect(`/skills`);
+          } else {
+            DB.close((err) => {
+              if (err) {
+                console.error("Error: ", err.message);
+                res.redirect("/skills");
+              } else {
+                console.log("That skill is deleted and DB closed");
+                res.redirect(`/skills`);
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    console.log("Need to be admin staff to delete skill item");
+  }
+};
+
 module.exports = {
   getAllSkills,
   createNewSkill,
+  updateSkill,
+  deleteSkill,
 };

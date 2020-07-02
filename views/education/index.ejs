@@ -9,9 +9,49 @@
             <p><%= degree.department %></p>
             <p><em><%= degree.thesis %></em></p>
             <p><%= degree.year_finished %></p>
+
+            <% if(locals.user && locals.user.is_admin===1){%>
+            <details>
+                <summary>Update Education Qualification</summary>
+                <article class="update-form-container">
+                    <form action="/education/update" class="update-education-form" method="POST">
+                        <input type="hidden" name="educationid" value="<%=degree.educationid%>">
+                        <div class="form-item">
+                            <label for="degree">Degree</label>
+                            <input type="text" id="degree" name="degree" value="<%= degree.degree%>" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="school">School</label>
+                            <input type="text" id="school" name="school" value="<%= degree.school%>" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="department">Department</label>
+                            <input type="text" id="department" name="department" value="<%= degree.department%>"
+                                required>
+                        </div>
+                        <div class="form-item">
+                            <label for="thesis">Thesis</label>
+                            <input type="text" id="thesis" name="thesis" value="<%= degree.thesis%>" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="year_finished">Year Finished</label>
+                            <input type="text" id="year_finished" name="year_finished"
+                                value="<%= degree.year_finished%>" required>
+                        </div>
+                        <div class="form-item">
+                            <button class="submit-button">Update Educational Qualification</button>
+                        </div>
+                    </form>
+                </article>
+            </details>
+            <details>
+                <summary>Delete</summary>
+                <form action="/education/delete" method="POST">
+                    <input type="hidden" name="educationid" value="<%=degree.educationid%>">
+                    <button>Delete? Are you Sure?</button>
+                </form>
+            </details>
         </div>
-        <% if(locals.user && locals.user.is_admin===1){%>
-        <button>Delete</button><button>Update</button>
         <%}%>
         <%})%>
     </article>

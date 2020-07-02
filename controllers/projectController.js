@@ -80,7 +80,84 @@ const createNewProject = (req, res) => {
     console.log("You need to be admin to create projects");
   }
 };
+
+const updateProject = (req, res) => {
+  if (req.session.user && req.session.user.is_admin === 1) {
+    let title = req.body.title;
+    let description = req.body.description;
+    let projectId = req.body.projectid;
+
+    let updateProjectStmt =
+      `UPDATE projects SET title=?, description=? WHERE projectid =?; `;
+    let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
+      if (err) {
+        console.error("Error: ", err.message);
+        res.redirect(`/projects`);
+      } else {
+        DB.run(
+          updateProjectStmt,
+          [title, description, projectId],
+          (err) => {
+            if (err) {
+              console.error("Error: ", err.message);
+              res.redirect(`/projects`);
+            } else {
+              console.log("Project Item updated");
+              DB.close((err) => {
+                if (err) {
+                  console.error("Error: ", err.message);
+                  res.redirect(`/projects`);
+                } else {
+                  console.log("Db is closed after updating!");
+                  res.redirect(`/projects`);
+                }
+              });
+            }
+          },
+        );
+      }
+    });
+  } else {
+    console.log("Need to be admin staff to update project item");
+  }
+};
+
+const deleteProject = (req, res) => {
+  if (req.session.user && req.session.user.is_admin === 1) {
+    let projectId = req.body.projectid;
+    let deleteProjectStmt = `DELETE from projects WHERE projectid=?;`;
+
+    let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
+      if (err) {
+        console.error("Error: ", err.message);
+        res.redirect(`/projects`);
+      } else {
+        DB.run(deleteProjectStmt, projectId, (err) => {
+          if (err) {
+            console.error("Error: ", err.message);
+            res.redirect(`/projects`);
+          } else {
+            DB.close((err) => {
+              if (err) {
+                console.error("Error: ", err.message);
+                res.redirect("/projects");
+              } else {
+                console.log("That project is deleted and DB closed");
+                res.redirect(`/projects`);
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    console.log("Need to be admin staff to delete project item");
+  }
+};
+
 module.exports = {
   getAllProjects,
   createNewProject,
+  updateProject,
+  deleteProject,
 };
