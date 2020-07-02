@@ -82,6 +82,10 @@ button{
 .main-link:hover{
     color: darkblue;
 }
+.main-link.active{
+    color: darkblue;
+    text-decoration: underline;
+}
 
 /* Styles for create forms */
 .form-title{

@@ -21,6 +21,7 @@ const getAllEducation = (req, res) => {
                 loggedin: req.session.loggedin,
                 user: req.session.user,
                 degrees: items,
+                url: req.originalUrl,
               },
             );
           } else {
@@ -32,6 +33,7 @@ const getAllEducation = (req, res) => {
                 loggedin: req.session.loggedin,
                 user: req.session.user,
                 degrees: items,
+                url: req.originalUrl,
               },
             );
             DB.close((err) => {

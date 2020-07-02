@@ -2,7 +2,6 @@ const sqlite3 = require("sqlite3");
 
 const getHomePage = (req, res) => {
   //Get 10 latest blogs
-
   const DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
     if (err) {
       console.error("Error: ", err.message);
@@ -22,6 +21,7 @@ const getHomePage = (req, res) => {
               success: req.session.success,
               loggedin: req.session.loggedin,
               user: req.session.user,
+              url: req.originalUrl,
             },
           );
           DB.close((err) => {

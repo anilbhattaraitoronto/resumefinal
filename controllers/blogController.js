@@ -19,6 +19,7 @@ const getAllBlogs = (req, res) => {
               success: req.session.success,
               loggedin: req.session.loggedin,
               user: req.session.user,
+              url: req.originalUrl,
             });
           } else {
             res.render("blogs/index", {
@@ -27,6 +28,7 @@ const getAllBlogs = (req, res) => {
               success: req.session.success,
               loggedin: req.session.loggedin,
               user: req.session.user,
+              url: req.originalUrl,
             });
             DB.close((err) => {
               if (err) {

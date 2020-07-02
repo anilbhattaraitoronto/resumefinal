@@ -23,6 +23,7 @@ const getAllProjects = (req, res) => {
                 success: req.session.success,
                 loggedin: req.session.loggedin,
                 user: req.session.user,
+                url: req.originalUrl,
               },
             );
           } else {
@@ -34,6 +35,7 @@ const getAllProjects = (req, res) => {
                 success: req.session.success,
                 loggedin: req.session.loggedin,
                 user: req.session.user,
+                url: req.originalUrl,
               },
             );
           }

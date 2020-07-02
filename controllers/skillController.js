@@ -20,6 +20,7 @@ const getAllSkills = (req, res) => {
               success: req.session.success,
               loggedin: req.session.loggedin,
               user: req.session.user,
+              url: req.originalUrl,
             },
           );
           DB.close((err) => {
