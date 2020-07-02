@@ -37,6 +37,9 @@ summary {
 p{
     padding: 8px 0;
 }
+ul, li{
+    padding-left: 16px;
+}
 .app-wrapper{
     position: relative;
     width: 100%;
