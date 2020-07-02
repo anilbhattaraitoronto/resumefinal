@@ -59,7 +59,7 @@ const createNewBlog = (req, res) => {
     const DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
       if (err) {
         console.log("Error: ", err.message);
-        res.redirect("/");
+        res.redirect("/blogs");
       } else {
         DB.run(
           addBlogStmt,
@@ -67,6 +67,7 @@ const createNewBlog = (req, res) => {
           (err) => {
             if (err) {
               console.log("Error: ", err.message);
+              res.redirect("/blogs");
             } else {
               console.log("New Blog added");
               DB.close((err) => {
@@ -146,6 +147,81 @@ const getBlogDetail = (req, res) => {
   });
 };
 
+const updateBlog = (req, res) => {
+  if (req.session.user && req.session.user.is_admin === 1) {
+    let title = req.body.title;
+    let keywords = req.body.keywords;
+    let summary = req.body.summary;
+    let author = req.body.author;
+    let content = req.body.content;
+    let blogId = req.body.blogid;
+
+    let updateBlogStmt =
+      `UPDATE blogs SET title=?, keywords=?, summary=?, author=?, content=? WHERE blogid =?; `;
+    let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
+      if (err) {
+        console.error("Error: ", err.message);
+        res.redirect(`/blogs/detail/${blogId}`);
+      } else {
+        DB.run(
+          updateBlogStmt,
+          [title, keywords, summary, author, content, blogId],
+          (err) => {
+            if (err) {
+              console.error("Error: ", err.message);
+              res.redirect(`/blogs/detail/${blogId}`);
+            } else {
+              console.log("Blog updated");
+              DB.close((err) => {
+                if (err) {
+                  console.error("Error: ", err.message);
+                  res.redirect(`/blogs/detail/${blogId}`);
+                } else {
+                  console.log("Db is closed after updating!");
+                  res.redirect(`/blogs/detail/${blogId}`);
+                }
+              });
+            }
+          },
+        );
+      }
+    });
+  } else {
+    console.log("Need to be admin staff to add comment");
+  }
+};
+
+const deleteBlog = (req, res) => {
+  if (req.session.user && req.session.user.is_admin === 1) {
+    let blogId = req.body.blogid;
+    let deleteBlogStmt = `DELETE from blogs WHERE blogid=?;`;
+
+    let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
+      if (err) {
+        console.error("Error: ", err.message);
+        res.redirect(`/blogs/detail/${blogId}`);
+      } else {
+        DB.run(deleteBlogStmt, blogId, (err) => {
+          if (err) {
+            console.error("Error: ", err.message);
+            res.redirect(`/blogs/detail/${blogId}`);
+          } else {
+            DB.close((err) => {
+              if (err) {
+                console.error("Error: ", err.message);
+              } else {
+                console.log("That post is deleted and DB closed");
+                res.redirect(`/blogs`);
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    console.log("Need to be admin staff to delete blog");
+  }
+};
 const addComment = (req, res) => {
   if (req.session.user && req.session.loggedin) {
     let commenter = req.session.user.username;
@@ -181,4 +257,11 @@ const addComment = (req, res) => {
   }
 };
 
-module.exports = { getAllBlogs, createNewBlog, getBlogDetail, addComment };
+module.exports = {
+  getAllBlogs,
+  createNewBlog,
+  getBlogDetail,
+  updateBlog,
+  deleteBlog,
+  addComment,
+};

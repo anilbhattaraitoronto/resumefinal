@@ -22,9 +22,16 @@ label, input, textarea{
     width: 100%;
     margin: auto;
     text-align: left;
+    padding: 4px 8px;
+    font-size: 1em;
 }
 button{
     cursor: pointer;
+}
+summary {
+    color:darkgreen; 
+    font-size:1em; 
+    padding:4px;
 }
 .app-wrapper{
     position: relative;

@@ -1,0 +1,35 @@
+<details>
+    <summary>Update Blog</summary>
+    <article class="update-form-container">
+
+        <form action="/blogs/update" class="update-blog-form" method="POST">
+            <div class="form-item">
+                <input type="hidden" name="blogid" value="<%=blog.blogid%>">
+            </div>
+            <div class="form-item">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="<%=blog.title%>" required>
+            </div>
+            <div class="form-item">
+                <label for="keywords">Keywords</label>
+                <input type="text" id="keywords" name="keywords" value="<%= blog.keywords%>" required>
+            </div>
+            <div class="form-item">
+                <label for="summary">Summary</label>
+                <input type="text" id="summary" name="summary" value="<%= blog.summary %>" required>
+            </div>
+            <div class="form-item"><label for="author">Author</label>
+                <input type="text" id="author" name="author" value="<%= blog.author %>" required>
+            </div>
+            <div class="form-item"><label for="content">Content</label>
+                <textarea name="content" id="content" cols="30" rows="10" required>
+                <%-blog.content%>
+            </textarea>
+            </div>
+
+            <div class="form-item">
+                <button class="submit-button">Update Blog</button>
+            </div>
+        </form>
+    </article>
+</details>

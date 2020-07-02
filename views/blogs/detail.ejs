@@ -9,7 +9,19 @@
         <p class="blog-summary">Summary: <em><%= blog.summary%></em></p>
         <p class="blog-content"><%- blog.content%></p>
         <% if (locals.user && locals.user.is_admin ===1){%>
-        <button>Delete</button><button>update</button>
+        <%- include('../layouts/forms/updateBlogForm') %>
+        <details>
+            <summary>
+                Delete Blog?
+            </summary>
+            <div class="delete-form">
+                <form action="/blogs/remove" method="POST">
+                    <input type="hidden" name="blogid" value="<%= blog.blogid %>">
+                    <button>Are you sure?</button>
+                </form>
+            </div>
+        </details>
+
         <%}%>
     </div>
     <%}%>
