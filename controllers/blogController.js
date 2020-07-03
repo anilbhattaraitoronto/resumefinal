@@ -161,7 +161,7 @@ const updateBlog = (req, res) => {
     let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
       if (err) {
         console.error("Error: ", err.message);
-        res.redirect(`/blogs/detail/${blogId}`);
+        res.redirect(`/blogs`);
       } else {
         DB.run(
           updateBlogStmt,
@@ -169,16 +169,16 @@ const updateBlog = (req, res) => {
           (err) => {
             if (err) {
               console.error("Error: ", err.message);
-              res.redirect(`/blogs/detail/${blogId}`);
+              res.redirect(`/blogs`);
             } else {
               console.log("Blog updated");
               DB.close((err) => {
                 if (err) {
                   console.error("Error: ", err.message);
-                  res.redirect(`/blogs/detail/${blogId}`);
+                  res.redirect(`/blogs`);
                 } else {
                   console.log("Db is closed after updating!");
-                  res.redirect(`/blogs/detail/${blogId}`);
+                  res.redirect(`/blogs`);
                 }
               });
             }
@@ -199,12 +199,12 @@ const deleteBlog = (req, res) => {
     let DB = new sqlite3.Database("./resumedb.sqlite", (err) => {
       if (err) {
         console.error("Error: ", err.message);
-        res.redirect(`/blogs/detail/${blogId}`);
+        res.redirect(`/blogs`);
       } else {
         DB.run(deleteBlogStmt, blogId, (err) => {
           if (err) {
             console.error("Error: ", err.message);
-            res.redirect(`/blogs/detail/${blogId}`);
+            res.redirect(`/blogs`);
           } else {
             DB.close((err) => {
               if (err) {

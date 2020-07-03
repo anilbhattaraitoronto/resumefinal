@@ -6,7 +6,9 @@
     font-family: Roboto;
     margin: 0;
     padding: 0;
-    --themeColor1: rgb(149, 179, 235);
+    --themeDark: rgb(4, 31, 80);
+    --themeLight: rgb(217, 217, 240);
+    --transition: 250ms all ease-in-out;
     font-size: 102%;
 }
 
@@ -23,26 +25,33 @@ label, input, textarea{
     width: 100%;
     margin: auto;
     text-align: left;
-    padding: 4px 8px;
+    padding: 2px 0;
     font-size: 1em;
 }
 button{
     cursor: pointer;
 }
-.blog-summary::marker{
-    content:"Read More";
-    transition: all 250ms ease-in-out;
+details>.blog-summary, details>.update-summary, details>.delete-summary{
+    background: var(--themeDark);
+    color: var(--themeLight);
+    transition: var(--transition);
 }
-details[open]>.blog-summary::marker{
+details>.blog-summary::marker{
+    content:"Read More";
+}
+details[open]>.blog-summary{
+    background: var(--themeLight);
+    color: var(--themeDark);
+}
+details[open] > .blog-summary::marker{
     content:"Read Less";
-    color: red;
 }
 .update-summary::marker{
     content:"Update?";
 }
 .delete-summary::marker{
     content:"Delete?";
-    transition: all 250ms ease-in-out;
+    
 }
 details[open]>.delete-summary::marker{
     content:"No";
@@ -53,23 +62,25 @@ details[open]>.delete-summary::marker{
 } */
 summary {
     cursor: pointer;
-    color:rgb(15, 2, 2); 
-    font-size:1em; 
     padding:2px 4px;
     width: 120px;
-    background: var(--themeColor1);
     text-align: center;
     margin: 3px 0;
     font-size: .9em;
-    transition: 250ms all ease-in-out;
+    transition: var(--transition);
 }
 summary:hover{
-    background: lightblue;
+    background: var(--themeLight);
+    color: var(--themeDark);
+}
+details[open]>summary{
+    background: var(--themeLight);
+    color: var(--themeDark);
 }
 
 
 p{
-    padding: 8px 0;
+    padding: 6px 0;
 }
 ul, li{
     padding-left: 16px;
@@ -79,9 +90,7 @@ ul, li{
     width: 100%;
     margin: auto;
     min-height: 100vh;
-    background-image: linear-gradient(90deg, gray, lightgray);
-    background: var(--themeColor1);
-    color: black;
+    background: var(--themeLight);
 }
 .main-header{
     position: sticky;
@@ -89,10 +98,10 @@ ul, li{
     width: 100%;
     max-width: 1000px;
     margin: auto;
-    padding: 8px;
-    box-shadow: 0 1px 0 rgb(190, 186, 186);
-    
-    background: white;
+    padding: 6px;
+    box-shadow: 0 1px 0 rgb(174, 183, 197);
+    background: var(--themeLight);
+    color: var(--themeDark);
 }
 .auth-nav{
     display: flex;
@@ -100,14 +109,15 @@ ul, li{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 8px ;
+    padding: 6px ;
 }
 .auth-link{
     cursor: pointer;
-    padding: 8px 0;
+    padding: 6px 0;
 }
 .auth-link:hover{
     color: darkblue;
+    text-decoration: underline;
 }
 .main-nav{
     display: flex;
@@ -116,25 +126,29 @@ ul, li{
     text-align: right;
 }
 .masthead a{
-    font-size: 1.5em;
+    font-size: 1.1em;
 }
 .logo{
     height: 40px;
     width: 40px;
     padding: 4px;
     border: 1px solid white;
-    transition: 250ms all ease-in-out;
+    transition: var(--transition);
 }
 .logo:hover{
-    border-color: darkblue;
+    border-color: var(--themeDark);
 }
 .main-link{
-    padding: 0 12px;
+    padding: 0 8px;
+    border-right: 1px solid var(--themeDark);
+    border-top-right-radius: 8px;
 }
 
 .main-link.active, .main-link:hover{
-    color: darkblue;
+    color: blue;
+    border-right-color: blue;
     text-decoration: underline;
+
 }
 
 /* Styles for create forms */
@@ -147,11 +161,12 @@ ul, li{
     top: -250px;
     left: 50%;
     transform: scale(0) ;
-    width: 95%;
+    width: 90%;
     max-width: 650px;
     margin: auto;
     z-index: 100;
-    background-image: linear-gradient(90deg, lightgray, gray);
+    background:var(--themeLight);
+    color: var(--themeDark);
     transition: 300ms all ease-in-out;
     padding: 20px;
     box-shadow: 0 0 2px gray;
@@ -159,6 +174,7 @@ ul, li{
 }
 
 .active{
+    
     transform: scale(1) translateX(-50%) ;
 }
 .close-form{
@@ -166,24 +182,48 @@ ul, li{
     position: absolute;
     top: 2px;
     right: 2px;
-    color: red;
+    color:red;
+    padding: 2px;
+    border: 1px solid red;
+    transition: var(--transition);
+}
+.close-form:hover{
+    border-color: darkred;
+    color: darkred;
 }
 
 .auth-form-container{
-    width: 100%;
-    max-width: 320px;
+    width: 95%;
+    max-width: 650px;
+    margin: auto;
     text-align: left;
-    background: var(--themeColor1);
+    background: var(--themeLight);
+    color: var(--themeDark);
+}
+.update-form-container{
+    background: var(--themeLight);
+    color: var(--themeDark);
+    padding: 8px;
 }
 .auth-form-container form{
     margin: 20px auto;
     padding: 8px;
     box-shadow: 0 0 1px darkblue;
 }
-.auth-form-container button{
+.form-container button, .auth-form-container button{
     font-size: .9em;
+    background: var(--themeDark);
+    color: var(--themeLight);
+    padding:4px;
+    margin: 4px 0;
+    outline: none;
+    border: none;
+    transition: var(--transition);
 }
-
+.form-container button:hover, .auth-form-container button:hover{
+    background: var(--themeLight);
+    color: var(--themeDark);
+}
 /* Page styles */
 .main-content{
     height: 100%;
@@ -255,9 +295,9 @@ footer{
     display: inline-block;
     padding: 8px;
     margin: 0 8px;
-    font-size: 1.5em;
-    border:1px solid white;
-    transition: 250ms all ease-in-out;
+    font-size: 1.2em;
+    transition: var(--transition);
+    border: 1px solid transparent;
 }
 .fa:hover{
     color: darkblue;
