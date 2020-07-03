@@ -7,6 +7,13 @@
             <h3 class="blog-title"><%= blog.title %></h3>
             <h4 class="blog-author"><%= blog.author%></h4>
             <p><%=blog.summary%></p>
+            <p><%=blog.keywords%></p>
+            <div class="blog-content">
+                <details>
+                    <summary>Read Full</summary>
+                    <p><%-blog.content%></p>
+                </details>
+            </div>
             <a href="/blogs/detail/<%=blog.blogid%>" class="read-full-link">Read full article</a>
             <p class="posted-date"><%= blog.posted_date %></p>
         </div>

@@ -30,6 +30,7 @@ button{
     cursor: pointer;
 }
 summary {
+    cursor: pointer;
     color:darkgreen; 
     font-size:1em; 
     padding:4px;
@@ -157,7 +158,8 @@ ul, li{
     max-width: 1000px;
     /* box-shadow: 0 0 1px rgb(44, 43, 43); */
     margin: 20px auto;
-    padding: 8px;
+    padding: 20px;
+    transition: all 200ms ease-in-out;
 }
 
 .page-title{
@@ -171,11 +173,12 @@ ul, li{
     padding: 4px;
 }
 .blog, .item{
-    padding: 4px 0 4px 8px;
+    padding: 20px;
     margin: 4px 0;
     line-height: 1.6;
     box-shadow: 0 0 1px rgb(79, 79, 90);
     background: white;
+    transition: all ease-in-out 200ms;
 }
 .blog>p, .item >p{
     padding: 4px;
@@ -226,4 +229,13 @@ footer{
 .fa:hover{
     color: darkblue;
     border-color: darkblue;
+}
+
+@media(max-width:560px) {
+    .main-content{
+        padding: 4px;
+    }
+    .blog, .item{
+        padding: 4px;
+    }
 }
