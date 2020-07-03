@@ -17,7 +17,7 @@
                 </details>
                 <% if (locals.user && locals.user.is_admin ===1){%>
                 <details>
-                    <summary>Update Blog</summary>
+                    <summary class="update-summary"></summary>
                     <article class="update-form-container">
 
                         <form action="/blogs/update" class="update-blog-form" method="POST">
@@ -52,8 +52,8 @@
                     </article>
                 </details>
                 <details>
-                    <summary>
-                        Delete Blog?
+                    <summary class="delete-summary">
+
                     </summary>
                     <div class="delete-form">
                         <form action="/blogs/remove" method="POST">
