@@ -31,11 +31,24 @@ button{
 }
 summary {
     cursor: pointer;
-    color:darkgreen; 
+    color:rgb(15, 2, 2); 
     font-size:1em; 
     padding:4px;
+    transition: all 250ms ease-in-out;
+    width: 180px;
+    background: var(--themeColor1);
+    padding: 4px;
+    text-align: center;
+    margin: 3px 0;
+    font-size: .9em;
 }
-
+summary:hover{
+    transform: scale(1.04);
+}
+details[open]>summary{
+    transform: scale(1.04);
+    text-decoration: underline;
+}
 p{
     padding: 8px 0;
 }
