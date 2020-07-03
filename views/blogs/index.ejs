@@ -11,13 +11,58 @@
                 <details>
                     <summary>Read Full</summary>
                     <p><%- blog.content%></p>
+                    <p class="posted-date"><%= blog.posted_date %></p>
                 </details>
-            </div>
-            <div class="blog-content">
-                <a href="/blogs/detail/<%= blog.blogid %>" class="read-full-link">Read full article</a>
-            </div>
-            <p class="posted-date"><%= blog.posted_date %></p>
+                <% if (locals.user && locals.user.is_admin ===1){%>
+                <details>
+                    <summary>Update Blog</summary>
+                    <article class="update-form-container">
 
+                        <form action="/blogs/update" class="update-blog-form" method="POST">
+                            <div class="form-item">
+                                <input type="hidden" name="blogid" value="<%=blog.blogid%>">
+                            </div>
+                            <div class="form-item">
+                                <label for="title">Title</label>
+                                <input type="text" id="title" name="title" value="<%=blog.title%>" required>
+                            </div>
+                            <div class="form-item">
+                                <label for="keywords">Keywords</label>
+                                <input type="text" id="keywords" name="keywords" value="<%= blog.keywords%>" required>
+                            </div>
+                            <div class="form-item">
+                                <label for="summary">Summary</label>
+                                <input type="text" id="summary" name="summary" value="<%= blog.summary %>" required>
+                            </div>
+                            <div class="form-item"><label for="author">Author</label>
+                                <input type="text" id="author" name="author" value="<%= blog.author %>" required>
+                            </div>
+                            <div class="form-item"><label for="content">Content</label>
+                                <textarea name="content" id="content" cols="30" rows="10" required>
+                                    <%-blog.content%>
+                                </textarea>
+                            </div>
+
+                            <div class="form-item">
+                                <button class="submit-button">Update Blog</button>
+                            </div>
+                        </form>
+                    </article>
+                </details>
+                <details>
+                    <summary>
+                        Delete Blog?
+                    </summary>
+                    <div class="delete-form">
+                        <form action="/blogs/remove" method="POST">
+                            <input type="hidden" name="blogid" value="<%= blog.blogid %>">
+                            <button>Are you sure?</button>
+                        </form>
+                    </div>
+                </details>
+
+                <%}%>
+            </div>
 
         </div>
 
