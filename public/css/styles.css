@@ -29,26 +29,45 @@ label, input, textarea{
 button{
     cursor: pointer;
 }
+.blog-summary::marker{
+    content:"Read More";
+    transition: all 250ms ease-in-out;
+}
+details[open]>.blog-summary::marker{
+    content:"Read Less";
+    color: red;
+}
+.update-summary::marker{
+    content:"Update?";
+}
+.delete-summary::marker{
+    content:"Delete?";
+    transition: all 250ms ease-in-out;
+}
+details[open]>.delete-summary::marker{
+    content:"No";
+    color: red;
+}
+/* details[open]>.update-summary::marker{
+    content:"Yes"
+} */
 summary {
     cursor: pointer;
     color:rgb(15, 2, 2); 
     font-size:1em; 
-    padding:4px;
-    transition: all 250ms ease-in-out;
-    width: 180px;
+    padding:2px 4px;
+    width: 120px;
     background: var(--themeColor1);
-    padding: 4px;
     text-align: center;
     margin: 3px 0;
     font-size: .9em;
+    transition: 250ms all ease-in-out;
 }
 summary:hover{
-    transform: scale(1.04);
+    background: lightblue;
 }
-details[open]>summary{
-    transform: scale(1.04);
-    text-decoration: underline;
-}
+
+
 p{
     padding: 8px 0;
 }

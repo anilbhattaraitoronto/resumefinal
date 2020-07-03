@@ -12,7 +12,7 @@
 
             <% if(locals.user && locals.user.is_admin===1){%>
             <details>
-                <summary>Update Education Qualification</summary>
+                <summary class="update-summary"></summary>
                 <article class="update-form-container">
                     <form action="/education/update" class="update-education-form" method="POST">
                         <input type="hidden" name="educationid" value="<%=degree.educationid%>">
@@ -45,7 +45,7 @@
                 </article>
             </details>
             <details>
-                <summary>Delete</summary>
+                <summary class="delete-summary"></summary>
                 <form action="/education/delete" method="POST">
                     <input type="hidden" name="educationid" value="<%=degree.educationid%>">
                     <button>Delete? Are you Sure?</button>

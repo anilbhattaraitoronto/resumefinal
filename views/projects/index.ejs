@@ -8,7 +8,7 @@
             <p class="project-description"><%-project.description%></p>
             <% if(locals.user && locals.user.is_admin===1){%>
             <details>
-                <summary>Update Project</summary>
+                <summary class="update-summary"></summary>
                 <article class="update-form-container">
 
                     <h3 class="form-title">Update Project</h3>
@@ -31,7 +31,7 @@
                 </article>
             </details>
             <details>
-                <summary>Remove This Project?</summary>
+                <summary class="delete-summary"></summary>
                 <form action="/projects/delete" method="POST">
                     <input type="hidden" name="projectid" value="<%=project.projectid%>">
                     <button>Delete? Are you Sure?</button>

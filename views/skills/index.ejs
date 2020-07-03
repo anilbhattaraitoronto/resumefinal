@@ -8,7 +8,7 @@
             <p><%- skill.description %></p>
             <% if(locals.user && locals.user.is_admin===1){%>
             <details>
-                <summary>Update This Skill?</summary>
+                <summary class="update-summary"></summary>
                 <article class="update-form-container">
                     <h3 class="form-title">UpdateSkill</h3>
                     <form action="/skills/update" class="update-form" method="POST">
@@ -30,7 +30,7 @@
                 </article>
             </details>
             <details>
-                <summary>Remove This Skill?</summary>
+                <summary class="delete-summary"></summary>
                 <form action="/skills/delete" method="POST">
                     <input type="hidden" name="skillid" value="<%= skill.skillid%>">
                     <button>Are You Sure? Remove?</button>
