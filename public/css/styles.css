@@ -16,7 +16,7 @@ body{
     width: 100%;
     margin: auto;
 }
-h1, h2, h3, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     letter-spacing: 2px;
     word-spacing: 6px;
 }
