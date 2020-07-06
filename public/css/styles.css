@@ -2,13 +2,14 @@
     box-sizing: border-box;
 }
 *{
-    line-height: 1.6;
+    line-height: 1.7;
     font-family: Roboto;
     margin: 0;
     padding: 0;
     --themeDark: rgb(4, 31, 80);
     --themeLight: rgb(217, 217, 240);
     --transition: 250ms all ease-in-out;
+    
 }
 
 body{
@@ -149,8 +150,8 @@ ul, li{
 }
 .main-link{
     padding: 0 8px;
-    border-right: 1px solid var(--themeDark);
-    border-top-right-radius: 8px;
+    border-right: 1px solid rgba(0, 0, 0, 0.137);
+    /* border-top-right-radius: 8px; */
 }
 
 .main-link.active, .main-link:hover{
