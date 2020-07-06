@@ -273,6 +273,10 @@ ul, li{
     word-spacing: 6px;
     
 }
+.blog-author{
+    color: rgba(75, 78, 80, 0.884);
+    font-weight: 500;
+}
 .read-full-link{
     text-decoration: underline;
     color: darkblue;
