@@ -16,6 +16,10 @@ body{
     width: 100%;
     margin: auto;
 }
+h1, h2, h3, h5, h6 {
+    letter-spacing: 2px;
+    word-spacing: 6px;
+}
 a{
     text-decoration: none;
     color: unset;
@@ -250,7 +254,7 @@ ul, li{
     padding: 20px;
     margin: 4px 0;
     line-height: 1.6;
-    box-shadow: 0 0 1px rgb(79, 79, 90);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.315);
     background: white;
     transition: all ease-in-out 200ms;
 }
@@ -258,6 +262,11 @@ ul, li{
     padding: 4px;
 }
 
+.blog-title, .project-title{
+    letter-spacing: 2px;
+    word-spacing: 6px;
+    
+}
 .read-full-link{
     text-decoration: underline;
     color: darkblue;
@@ -320,12 +329,20 @@ footer{
     margin: auto;
     padding: 8px;
 }
-.section-title{
-    font-size: 1.3em;
+.section-title, .page-title{
+    font-size: 1.1em;
     padding-bottom: 8px;
     text-transform: uppercase;
     word-spacing: 6px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+.section-title::after{
+    content:"";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.322);
 }
 
 @media(max-width:650px) {
