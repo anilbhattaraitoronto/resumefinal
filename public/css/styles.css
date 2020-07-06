@@ -9,7 +9,6 @@
     --themeDark: rgb(4, 31, 80);
     --themeLight: rgb(217, 217, 240);
     --transition: 250ms all ease-in-out;
-    font-size: 102%;
 }
 
 body{
@@ -346,6 +345,9 @@ footer{
 }
 
 @media(max-width:650px) {
+    *{
+        font-size: 102%;
+    }
     .main-content{
         padding: 4px;
     }
