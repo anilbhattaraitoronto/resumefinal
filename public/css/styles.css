@@ -108,7 +108,7 @@ ul, li{
     width: 100%;
     max-width: 1000px;
     margin: auto;
-    padding: 6px;
+    padding: 3px;
     /* box-shadow: 0 1px 0 rgb(174, 183, 197); */
     background: var(--themeLight);
     color: var(--themeDark);
@@ -130,6 +130,7 @@ ul, li{
     text-decoration: underline;
 }
 .main-nav{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -139,10 +140,10 @@ ul, li{
     font-size: 1.1em;
 }
 .logo{
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     padding: 4px;
-    border: 1px solid white;
+    border: 1px solid rgba(125, 131, 145, 0.37);
     transition: var(--transition);
 }
 .logo:hover{
@@ -240,7 +241,7 @@ ul, li{
     width: 100%;
     max-width: 1000px;
     /* box-shadow: 0 0 1px rgb(44, 43, 43); */
-    margin: 20px auto;
+    margin: auto;
     padding: 20px;
     transition: all 200ms ease-in-out;
 }
