@@ -59,14 +59,14 @@ details>.blog-summary, details>.update-summary, details>.delete-summary{
     transition: var(--transition);
 }
 details>.blog-summary::after{
-    content:"Read More";
+    content:"Read more";
 }
 details[open]>.blog-summary{
     background: var(--themeLight);
     color: var(--themeDark);
 }
 details[open] > .blog-summary::after{
-    content:"Read Less";
+    content:"Read less";
 }
 .update-summary::after{
     content:"Update?";
