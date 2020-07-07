@@ -152,6 +152,7 @@ ul, li{
 .main-link{
     padding: 0 8px;
     border-right: 1px solid rgba(0, 0, 0, 0.137);
+    letter-spacing: 2px;
     /* border-top-right-radius: 8px; */
 }
 
@@ -362,5 +363,8 @@ footer{
     }
     .home-page{
         grid-template-columns: 1fr;
+    }
+    .main-link{
+        letter-spacing: 0;
     }
 }
