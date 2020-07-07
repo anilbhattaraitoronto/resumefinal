@@ -287,7 +287,7 @@ ul, li{
     word-spacing: 6px; 
     transition: var(--transition);
 }
-.blog-title:hover{
+.blog-title>a:hover{
     text-decoration: underline;
 }
 .blog-author{
