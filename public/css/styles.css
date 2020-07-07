@@ -59,24 +59,24 @@ details>.blog-summary, details>.update-summary, details>.delete-summary{
     color: var(--themeLight);
     transition: var(--transition);
 }
-details>.blog-summary::marker{
+details>.blog-summary::after{
     content:"Read More";
 }
 details[open]>.blog-summary{
     background: var(--themeLight);
     color: var(--themeDark);
 }
-details[open] > .blog-summary::marker{
+details[open] > .blog-summary::after{
     content:"Read Less";
 }
-.update-summary::marker{
+.update-summary::after{
     content:"Update?";
 }
-.delete-summary::marker{
+.delete-summary::after{
     content:"Delete?";
     
 }
-details[open]>.delete-summary::marker{
+details[open]>.delete-summary::after{
     content:"No";
     color: red;
 }
