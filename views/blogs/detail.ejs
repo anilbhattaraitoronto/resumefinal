@@ -7,6 +7,7 @@
         <p class="blog-keywords">Keywords: <em><%= blog.keywords %></em></p>
         <p class="blog-summary">Summary: <em><%= blog.summary%></em></p>
         <p class="blog-content"><%- blog.content%></p>
+        <p class="blog-posted_date"><%= new Date(blog.posted_date).toDateString()%></p>
 
     </div>
     <%}%>
