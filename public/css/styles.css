@@ -285,8 +285,11 @@ ul, li{
 
 .blog-title, .project-title{
     letter-spacing: 2px;
-    word-spacing: 6px;
-    
+    word-spacing: 6px; 
+    transition: var(--transition);
+}
+.blog-title:hover{
+    text-decoration: underline;
 }
 .blog-author{
     color: rgba(75, 78, 80, 0.884);
